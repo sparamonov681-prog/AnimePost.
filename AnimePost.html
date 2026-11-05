@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100d18">
+<title>AnimePost — Creator Studio</title>
+<style>
+:root{--bg:#100d18;--panel:#191425;--panel2:#211a30;--text:#f7f1ff;--muted:#aaa0bb;--accent:#ff7a35;--accent2:#a855f7;--line:#342943;--good:#65d6a2;--shadow:0 18px 50px #0005}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,#45204c55,transparent 30%),radial-gradient(circle at 0% 90%,#6d321e33,transparent 30%),var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer;color:inherit;border:0}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.sidebar{background:#120f1cdd;border-right:1px solid var(--line);padding:24px 16px;display:flex;flex-direction:column;gap:24px}.brand{display:flex;align-items:center;gap:12px;padding:0 8px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-size:23px;box-shadow:0 8px 25px #a855f755}.brand strong{font-size:20px;letter-spacing:.3px}.brand small{display:block;color:var(--muted);font-size:11px}.nav{display:grid;gap:8px}.nav button{background:transparent;text-align:left;padding:12px 14px;border-radius:12px;color:var(--muted);display:flex;gap:12px;align-items:center;transition:.2s}.nav button:hover,.nav button.active{background:linear-gradient(90deg,#ff7a3522,#a855f722);color:var(--text)}.nav .ico{width:22px;text-align:center;font-size:17px}.side-note{margin-top:auto;padding:14px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(135deg,#ff7a3512,#a855f712);color:var(--muted);font-size:12px}.main{padding:28px clamp(18px,4vw,52px);max-width:1500px;width:100%;margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:30px}.eyebrow{color:var(--accent);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:800}.topbar h1{font-size:clamp(25px,3vw,36px);margin:5px 0 0}.profile{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);padding:8px 12px;border-radius:99px;color:var(--muted);font-size:13px}.avatar{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white}
+.page{display:none}.page.active{display:block}.hero{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:24px;padding:clamp(22px,4vw,38px);background:linear-gradient(115deg,#28172c 0%,#25192f 48%,#42221e 100%);box-shadow:var(--shadow);margin-bottom:22px}.hero:after{content:"🎃";position:absolute;right:5%;top:5%;font-size:clamp(80px,15vw,170px);opacity:.16;filter:drop-shadow(0 0 25px var(--accent))}.hero h2{font-size:clamp(24px,4vw,39px);line-height:1.1;max-width:580px;margin:10px 0}.hero p{color:#c9bdd5;max-width:520px}.btn{padding:11px 16px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ed4f70);font-weight:750;color:white;box-shadow:0 7px 22px #ff713533;transition:.2s}.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}.btn.secondary{background:var(--panel2);border:1px solid var(--line);box-shadow:none;color:var(--text)}.btn.ghost{background:transparent;border:1px solid var(--line);box-shadow:none;color:var(--muted)}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 8px 30px #0002}.card h3{margin:0 0 7px;font-size:17px}.card p,.muted{color:var(--muted);font-size:13px}.stat{font-size:26px;font-weight:800;margin-top:12px}.card-icon{width:42px;height:42px;border-radius:13px;background:#ff7a351c;display:grid;place-items:center;font-size:20px;margin-bottom:15px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 14px}.section-head h2{margin:0;font-size:21px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:16px}.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.field{display:grid;gap:7px;margin:14px 0}.field label{font-size:13px;color:var(--muted)}input[type=text],input[type=tel],textarea,select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;background:#100d18;color:var(--text);outline:none}textarea{min-height:105px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:var(--accent)}.drop{border:1.5px dashed #765a83;border-radius:17px;padding:28px;text-align:center;background:#a855f70a;cursor:pointer}.drop:hover{border-color:var(--accent)}.drop strong{display:block;margin:8px 0}.preview{width:100%;max-height:430px;object-fit:contain;background:#08070b;border-radius:14px;margin-top:14px}.hidden{display:none!important}.notice{padding:12px 14px;border-radius:12px;background:#f59e0b12;border:1px solid #f59e0b44;color:#eacb91;font-size:13px;margin:12px 0}.success{background:#65d6a212;border-color:#65d6a244;color:var(--good)}.progress{height:8px;border-radius:9px;background:#332a40;overflow:hidden;margin:12px 0}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .2s}.theme-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.theme-choice{border:1px solid var(--line);border-radius:16px;padding:15px;background:var(--panel2);text-align:left}.theme-choice.selected{border-color:var(--accent);box-shadow:0 0 0 2px #ff7a3522}.swatches{display:flex;gap:7px;margin:12px 0}.swatches i{width:25px;height:25px;border-radius:50%;display:block}.auth-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.auth-btn{padding:14px;border-radius:13px;border:1px solid var(--line);background:var(--panel2);text-align:left;display:flex;align-items:center;gap:12px}.auth-btn:hover{border-color:var(--accent)}.auth-symbol{width:32px;height:32px;border-radius:10px;background:#ffffff12;display:grid;place-items:center;font-weight:800}.footer{color:var(--muted);font-size:11px;margin-top:25px;text-align:center}.pill{font-size:11px;color:var(--accent);border:1px solid #ff7a3544;padding:4px 8px;border-radius:99px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#211a30;border:1px solid var(--line);padding:12px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:.25s;z-index:10;box-shadow:var(--shadow)}.toast.show{opacity:1;transform:translate(-50%,0)}
+body.winter{--bg:#0b1422;--panel:#121f32;--panel2:#1a2b43;--text:#f0f7ff;--muted:#a6bad0;--accent:#75c9ff;--accent2:#a5a6ff;--line:#2b405a}body.winter{background:radial-gradient(circle at 85% 0%,#4e83ba44,transparent 32%),radial-gradient(circle at 0% 90%,#7aaed522,transparent 30%),var(--bg)}body.winter .hero{background:linear-gradient(115deg,#172c48,#1c3553 55%,#263c62)}body.winter .hero:after{content:"❄️"}body.winter .logo{background:linear-gradient(135deg,#75c9ff,#a5a6ff)}
+@media(max-width:850px){.app{grid-template-columns:1fr}.sidebar{position:sticky;top:0;z-index:5;padding:10px 12px;border-right:0;border-bottom:1px solid var(--line);gap:10px}.brand{padding:0 5px}.brand small,.side-note{display:none}.brand strong{font-size:17px}.logo{width:34px;height:34px}.nav{display:flex;overflow:auto;gap:5px}.nav button{white-space:nowrap;padding:9px 11px;font-size:12px}.main{padding:20px 15px}.grid{grid-template-columns:1fr}.topbar{margin-bottom:20px}.auth-grid{grid-template-columns:1fr}}@media(min-width:851px) and (max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">⛩</div><div><strong>AnimePost</strong><small>CREATOR STUDIO</small></div></div>
+  <nav class="nav" aria-label="Главная навигация">
+    <button class="active" data-page="home"><span class="ico">⌂</span> Главная</button>
+    <button data-page="studio"><span class="ico">◉</span> TikTok Studio</button>
+    <button data-page="compress"><span class="ico">⇩</span> Сжатие видео</button>
+    <button data-page="account"><span class="ico">◎</span> Аккаунт</button>
+    <button data-page="settings"><span class="ico">⚙</span> Настройки</button>
+  </nav>
+  <div class="side-note">✦ Твоя творческая станция для аниме-эдитов.<br><br>Локальная демоверсия AnimePost.</div>
+</aside>
+<main class="main">
+<header class="topbar"><div><div class="eyebrow">ANIME CREATOR SPACE</div><h1 id="pageTitle">Твоя студия творчества</h1></div><div class="profile"><div class="avatar">A</div><span>Гость</span><span class="pill">DEMO</span></div></header>
+
+<section class="page active" id="home">
+  <div class="hero"><div class="eyebrow">WELCOME TO ANIMEPOST</div><h2>Создавай. Обрабатывай. Публикуй.</h2><p>Всё необходимое для подготовки твоих аниме-эдитов — в одном стильном пространстве.</p><button class="btn" data-go="studio">Открыть студию →</button></div>
+  <div class="grid">
+    <div class="card"><div class="card-icon">🎬</div><h3>TikTok Studio</h3><p>Подготовка роликов, описаний и хэштегов.</p><button class="btn secondary" data-go="studio">Перейти</button></div>
+    <div class="card"><div class="card-icon">⚡</div><h3>Сжатие видео</h3><p>Уменьшение размера видео с настройкой битрейта.</p><button class="btn secondary" data-go="compress">Открыть</button></div>
+    <div class="card"><div class="card-icon">🎨</div><h3>Оформление</h3><p>Выбирай сезонную тему интерфейса.</p><button class="btn secondary" data-go="settings">Настроить</button></div>
+  </div>
+  <div class="section-head"><h2>Быстрый старт</h2><span class="pill">3 шага</span></div>
+  <div class="panel"><div class="row"><b>01</b><span class="muted">Выбери видео с устройства</span><span>→</span><b>02</b><span class="muted">Подготовь описание и экспорт</span><span>→</span><b>03</b><span class="muted">Опубликуй через официальные инструменты TikTok</span></div></div>
+</section>
+
+<section class="page" id="studio">
+  <div class="section-head"><h2>Подготовка публикации</h2><span class="pill">TIKTOK WORKSPACE</span></div>
+  <div class="panel">
+    <div class="drop" id="studioDrop"><div style="font-size:30px">🎞️</div><strong>Выбери видео для публикации</strong><span class="muted">MP4, MOV, WEBM — файл останется на твоём устройстве</span><input id="studioFile" type="file" accept="video/*" class="hidden"></div>
+    <video id="studioPreview" class="preview hidden" controls playsinline></video>
+    <div class="field"><label for="caption">Описание публикации</label><textarea id="caption" maxlength="2200" placeholder="Добавь описание своего эдита..."></textarea><div class="row" style="justify-content:space-between"><span class="muted">Добавь подходящие хэштеги</span><span class="muted" id="charCount">0 / 2200</span></div></div>
+    <div class="field"><label for="hashtags">Хэштеги</label><input id="hashtags" type="text" placeholder="#anime #edit #amv #fyp"></div>
+    <div class="row"><button class="btn" id="copyCaption">Скопировать описание</button><button class="btn secondary" id="openTikTokStudio">Открыть TikTok Studio ↗</button></div>
+    <div class="notice">Публикация из этого HTML-файла напрямую не выполняется. Для неё требуется серверная интеграция с официальным TikTok Content Posting API и одобрение приложения. Кнопка выше открывает официальную студию.</div>
+  </div>
+</section>
+
+<section class="page" id="compress">
+  <div class="section-head"><h2>Сжатие видео</h2><span class="pill">LOCAL PROCESSING</span></div>
+  <div class="panel">
+    <div class="drop" id="compressDrop"><div style="font-size:30px">📦</div><strong>Выбери видео для сжатия</strong><span class="muted">Обработка выполняется в браузере, файл не отправляется на сервер</span><input id="compressFile" type="file" accept="video/*" class="hidden"></div>
+    <video id="compressPreview" class="preview hidden" controls playsinline></video>
+    <div id="videoInfo" class="muted" style="margin-top:10px"></div>
+    <div class="field"><label for="quality">Качество экспорта</label><select id="quality"><option value="12000000">Максимальное — 12 Мбит/с</option><option value="8000000" selected>Высокое — 8 Мбит/с</option><option value="5000000">Сбалансированное — 5 Мбит/с</option><option value="3000000">Компактное — 3 Мбит/с</option></select></div>
+    <div class="notice">Встроенный экспорт создаёт файл WEBM через MediaRecorder. Это перекодирование, поэтому абсолютное сохранение исходного качества и формата MP4 не гарантируется. Для профессионального MP4/H.264 экспорта потребуется FFmpeg на сервере или отдельный модуль.</div>
+    <div class="row"><button class="btn" id="compressBtn" disabled>Начать сжатие</button><a id="downloadVideo" class="btn secondary hidden" download="animepost-export.webm">Скачать результат</a></div>
+    <div class="progress"><span id="progressBar"></span></div><div id="compressStatus" class="muted" aria-live="polite">Ожидание видео…</div>
+  </div>
+</section>
+
+<section class="page" id="account">
+  <div class="section-head"><h2>Подключение аккаунта</h2><span class="pill">OAUTH READY UI</span></div>
+  <div class="panel">
+    <h3>Выбери способ авторизации</h3><p class="muted">Это демонстрационные кнопки интерфейса. Настоящий вход появится после настройки OAuth и серверных адресов.</p>
+    <div class="auth-grid">
+      <button class="auth-btn" data-provider="TikTok"><span class="auth-symbol">♪</span><span><b>TikTok</b><br><small class="muted">Через официальный вход</small></span></button>
+      <button class="auth-btn" data-provider="Google"><span class="auth-symbol">G</span><span><b>Google</b><br><small class="muted">Google Sign-In</small></span></button>
+      <button class="auth-btn" data-provider="Facebook"><span class="auth-symbol">f</span><span><b>Facebook</b><br><small class="muted">Facebook Login</small></span></button>
+      <button class="auth-btn" data-provider="телефон"><span class="auth-symbol">✆</span><span><b>Номер телефона</b><br><small class="muted">Подтверждение по SMS</small></span></button>
+    </div>
+    <div class="notice">Не вводи пароль TikTok, Google или Facebook в сторонние формы. Авторизация должна проходить на официальной странице провайдера. Не запрашивай и не сохраняй пароли или SMS-коды внутри AnimePost.</div>
+  </div>
+</section>
+
+<section class="page" id="settings">
+  <div class="section-head"><h2>Настройки оформления</h2><span class="pill">PERSONALIZATION</span></div>
+  <div class="panel"><h3>Выбери атмосферу AnimePost</h3><p class="muted">Тема сохраняется на этом устройстве.</p>
+    <div class="theme-options">
+      <button class="theme-choice selected" data-theme="halloween"><b>🎃 Halloween Anime</b><div class="swatches"><i style="background:#100d18"></i><i style="background:#ff7a35"></i><i style="background:#a855f7"></i></div><span class="muted">Тёмная атмосфера, тыквы и неон</span></button>
+      <button class="theme-choice" data-theme="winter"><b>❄️ Winter Anime</b><div class="swatches"><i style="background:#0b1422"></i><i style="background:#75c9ff"></i><i style="background:#a5a6ff"></i></div><span class="muted">Лёд, снег и холодные оттенки</span></button>
+    </div>
+  </div>
+  <div class="panel"><h3>О приложении</h3><p class="muted">AnimePost — локальный интерфейс-помощник для создателей коротких видео. Настройки темы хранятся в браузере. Видеофайлы не загружаются на сервер.</p><span class="pill">VERSION 1.0 • FRONTEND DEMO</span></div>
+</section>
+<div class="footer">ANIMEPOST • CREATE YOUR OWN STORY ✦</div>
+</main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const toast = message => {
+  const el=$('toast'); el.textContent=message; el.classList.add('show');
+  clearTimeout(toast.timer); toast.timer=setTimeout(()=>el.classList.remove('show'),2600);
+};
+const titles={home:'Твоя студия творчества',studio:'TikTok Studio',compress:'Сжатие видео',account:'Аккаунт',settings:'Настройки'};
+function showPage(name){
+  if(!titles[name]) return;
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===name));
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
+  $('pageTitle').textContent=titles[name];
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.go)));
+function setTheme(theme){
+  document.body.classList.toggle('winter',theme==='winter');
+  document.querySelectorAll('.theme-choice').forEach(b=>b.classList.toggle('selected',b.dataset.theme===theme));
+  try{localStorage.setItem('animepost-theme',theme)}catch(_){}
+}
+let savedTheme='halloween';try{savedTheme=localStorage.getItem('animepost-theme')||'halloween'}catch(_){}
+setTheme(savedTheme);
+document.querySelectorAll('[data-theme]').forEach(b=>b.addEventListener('click',()=>setTheme(b.dataset.theme)));
+
+function setupDrop(dropId,inputId,onFile){
+  const drop=$(dropId),input=$(inputId);
+  drop.addEventListener('click',e=>{if(e.target!==input)input.click()});
+  drop.addEventListener('dragover',e=>{e.preventDefault();drop.style.borderColor='var(--accent)'});
+  drop.addEventListener('dragleave',()=>drop.style.borderColor='');
+  drop.addEventListener('drop',e=>{e.preventDefault();drop.style.borderColor='';const f=e.dataTransfer.files[0];if(f&&f.type.startsWith('video/'))onFile(f);else toast('Выбери видеофайл.')});
+  input.addEventListener('change',()=>{const f=input.files&&input.files[0];if(f)onFile(f)});
+}
+let studioUrl=null,compressUrl=null,compressFile=null,recording=false;
+function showVideo(file,videoId,kind){
+  const url=URL.createObjectURL(file),video=$(videoId);
+  if(kind==='studio'){if(studioUrl)URL.revokeObjectURL(studioUrl);studioUrl=url}
+  else{if(compressUrl)URL.revokeObjectURL(compressUrl);compressUrl=url}
+  video.src=url;video.classList.remove('hidden');video.load();
+}
+setupDrop('studioDrop','studioFile',file=>{showVideo(file,'studioPreview','studio');toast('Видео добавлено в публикацию.')});
+setupDrop('compressDrop','compressFile',file=>{
+  compressFile=file;showVideo(file,'compressPreview','compress');
+  $('compressBtn').disabled=false;
+  $('videoInfo').textContent=`${file.name} • ${(file.size/1024/1024).toFixed(2)} МБ`;
+  $('compressStatus').textContent='Видео готово к обработке.';
+  $('downloadVideo').classList.add('hidden');$('progressBar').style.width='0%';
+});
+$('caption').addEventListener('input',()=>{$('charCount').textContent=`${$('caption').value.length} / 2200`});
+$('copyCaption').addEventListener('click',async()=>{
+  const text=[$('caption').value.trim(),$('hashtags').value.trim()].filter(Boolean).join('\n\n');
+  if(!text){toast('Сначала добавь описание или хэштеги.');return}
+  try{await navigator.clipboard.writeText(text);toast('Описание скопировано.')}
+  catch(_){const area=document.createElement('textarea');area.value=text;document.body.appendChild(area);area.select();try{document.execCommand('copy');toast('Описание скопировано.')}catch(e){toast('Не удалось скопировать автоматически.')}area.remove()}
+});
+$('openTikTokStudio').addEventListener('click',()=>window.open('https://www.tiktok.com/tiktokstudio','_blank','noopener,noreferrer'));
+document.querySelectorAll('[data-provider]').forEach(b=>b.addEventListener('click',()=>toast(`Вход через ${b.dataset.provider}: требуется подключить официальный OAuth на сервере.`)));
+
+$('compressBtn').addEventListener('click',async()=>{
+  if(!compressFile||recording)return;
+  const video=$('compressPreview');
+  if(!('MediaRecorder' in window)||!video.captureStream){toast('Браузер не поддерживает встроенное сжатие.');return}
+  if(!video.videoWidth){toast('Подожди, пока видео загрузится.');return}
+  const mime=['video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm'].find(t=>MediaRecorder.isTypeSupported(t));
+  if(!mime){toast('Поддерживаемый кодек WEBM не найден.');return}
+  recording=true;$('compressBtn').disabled=true;$('compressStatus').textContent='Подготовка экспорта…';
+  $('downloadVideo').classList.add('hidden');$('progressBar').style.width='0%';
+  let stream=null,recorder=null,chunks=[];
+  try{
+    video.pause();video.currentTime=0;
+    await new Promise((resolve,reject)=>{
+      const timer=setTimeout(()=>reject(new Error('Не удалось подготовить видео.')),10000);
+      if(video.readyState>=2){clearTimeout(timer);resolve()}
+      else{video.addEventListener('loadeddata',()=>{clearTimeout(timer);resolve()},{once:true});video.addEventListener('error',()=>{clearTimeout(timer);reject(new Error('Ошибка чтения видео.'))},{once:true})}
+    });
+    stream=video.captureStream();
+    const bitrate=Number($('quality').value);
+    recorder=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:bitrate,audioBitsPerSecond:160000});
+    recorder.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
+    const done=new Promise((resolve,reject)=>{
+      recorder.onerror=()=>reject(new Error('Ошибка записи видео.'));
+      recorder.onstop=()=>resolve();
+    });
+    recorder.start(1000);
+    const duration=Number.isFinite(video.duration)?video.duration:0;
+    const tick=()=>{
+      if(!recording)return;
+      const pct=duration?Math.min(99,video.currentTime/duration*100):0;
+      $('progressBar').style.width=pct+'%';
+      $('compressStatus').textContent=`Идёт обработка: ${Math.round(pct)}%`;
+      if(!video.ended)requestAnimationFrame(tick);
+    };
+    video.currentTime=0;
+    await video.play();
+    tick();
+    await new Promise(resolve=>video.addEventListener('ended',resolve,{once:true}));
+    if(recorder.state!=='inactive')recorder.stop();
+    await done;
+    const blob=new Blob(chunks,{type:mime});
+    const outUrl=URL.createObjectURL(blob);
+    $('downloadVideo').href=outUrl;$('downloadVideo').classList.remove('hidden');
+    $('downloadVideo').download='animepost-export.webm';
+    $('progressBar').style.width='100%';
+    $('compressStatus').textContent=`Готово • ${(blob.size/1024/1024).toFixed(2)} МБ • WEBM`;
+    toast('Экспорт завершён. Можно скачать видео.');
+  }catch(err){
+    $('compressStatus').textContent=err.message||'Не удалось обработать видео.';
+    toast(err.message||'Ошибка обработки видео.');
+  }finally{
+    recording=false;$('compressBtn').disabled=false;
+    if(stream)stream.getTracks().forEach(t=>t.stop());
+    video.pause();video.currentTime=0;
+  }
+});
+})();
+</script>
+</body>
+</html>
